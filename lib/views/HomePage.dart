@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ynov_meteo/views/NavBar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -13,23 +14,17 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
+        title: const Text('Paris'),
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-        toolbarHeight: 0,
+        toolbarHeight: 50,
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),
           child: Column(children: [
-            const Text(
-              "PARIS",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 30,
-              ),
-            ),
             Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
@@ -137,11 +132,6 @@ class _HomePage extends State<HomePage> {
             ),
           ]),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color.fromARGB(255, 144, 168, 253),
-        child: const Icon(Icons.add),
       ),
     );
   }
