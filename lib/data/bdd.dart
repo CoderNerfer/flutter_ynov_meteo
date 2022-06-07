@@ -35,9 +35,9 @@ class SQLRequest {
   }
 
   // Fetch all cities
-  static Future<List<Map<String, dynamic>>> getCities() async {
+  static Future<List<Map>> getCities() async {
     final db = await SQLRequest.db();
-    return db.query('cities', orderBy: "id");
+    return db.query('cities', orderBy: "id") as List<Map>;
   }
 
   // Read a single city by id
