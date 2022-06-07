@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ynov_meteo/views/HomePage.dart';
+import 'package:ynov_meteo/model/city.dart';
 
 void main() {
   runApp(const MyApp());
