@@ -14,7 +14,7 @@ class _ForewardWeather extends State<ForewardWeather> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      drawer: const NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
         title: const Text('Paris'),
@@ -25,7 +25,6 @@ class _ForewardWeather extends State<ForewardWeather> {
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),
           child: Container(
-            // height: 400,
             child: ListView.builder(
               itemCount: 24,
               itemBuilder: (context, index) {
@@ -50,11 +49,6 @@ class _ForewardWeather extends State<ForewardWeather> {
                                 color: Colors.white,
                               ),
                             ),
-                            // Container(
-                            //   width: 40,
-                            //   height: 40,
-                            //   color: Colors.black,
-                            // ),
                             Image(
                               image: NetworkImage(
                                   "http://openweathermap.org/img/wn/10d.png"),

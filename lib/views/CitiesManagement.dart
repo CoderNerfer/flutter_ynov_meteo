@@ -14,10 +14,10 @@ class _CitiesManagement extends State<CitiesManagement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      drawer: const NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
-        title: const Text('Paris'),
+        title: const Text('Gerer vos villes'),
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         toolbarHeight: 50,
       ),

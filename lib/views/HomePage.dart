@@ -14,7 +14,7 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      drawer: const NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
         title: const Text('Paris'),
@@ -38,24 +38,19 @@ class _HomePage extends State<HomePage> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(children: [
-                          const Text(
+                        Column(children: const [
+                          Text(
                             "Monday\n02, 2022\n21:00",
                             style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 15.0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              color: Colors.black,
+                            padding: EdgeInsets.only(top: 15.0),
+                            child: Image(
+                              image: NetworkImage(
+                                  "http://openweathermap.org/img/wn/10d.png"),
                             ),
-                            // Image(
-                            //   image: NetworkImage(
-                            //       "http://openweathermap.org/img/wn/10d.png"),
-                            // )
                           ),
                         ]),
                         Column(children: const [
@@ -98,24 +93,19 @@ class _HomePage extends State<HomePage> {
                               vertical: 15.0, horizontal: 10.0),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
+                              children: const [
+                                Text(
                                   "11:00",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.white,
                                   ),
                                 ),
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  color: Colors.black,
+                                Image(
+                                  image: NetworkImage(
+                                      "http://openweathermap.org/img/wn/10d.png"),
                                 ),
-                                // Image(
-                                //   image: NetworkImage(
-                                //       "http://openweathermap.org/img/wn/10d.png"),
-                                // )
-                                const Text(
+                                Text(
                                   "12,03°",
                                   style: TextStyle(
                                     color: Colors.white,
