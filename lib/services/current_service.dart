@@ -14,7 +14,7 @@ Future<Current> getCurrentData() async {
   );
 
   var url = Uri.https("api.openweathermap.org", '/data/2.5/weather',
-      {'q': 'Lyon', 'appid': '4364afa41febe0e86a2e4b3ae7860fed'});
+      {'q': 'Paris', 'appid': '4364afa41febe0e86a2e4b3ae7860fed'});
   var responce = await http.get(url);
   if (responce.statusCode == 200) {
     var jsonResponse = jsonDecode(responce.body);

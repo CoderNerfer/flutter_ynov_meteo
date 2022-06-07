@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ynov_meteo/views/NavBar.dart';
 import 'package:ynov_meteo/model/current.dart';
 import 'package:ynov_meteo/services/current_service.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -48,8 +49,11 @@ class _HomePage extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(children: [
-                                  const Text(
-                                    "Monday\n02, 2022\n21:00",
+                                  Text(
+                                    "${DateFormat('EEE dd,gi\nMMM yyyy\nhh:mm a').format(DateTime.fromMillisecondsSinceEpoch((snapshot.data!.dt + (snapshot.data!.timezone)) * 1000))}\n\n${snapshot.data!.weather[0].description}"
+
+                                    // "Monday\n02, 2022\n21:00",
+                                    ,
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -66,7 +70,7 @@ class _HomePage extends State<HomePage> {
                                 ]),
                                 Column(children: [
                                   Text(
-                                    "${snapshot.data!.main.temp - 273.15}",
+                                    "${(snapshot.data!.main.temp - 273.15).toStringAsFixed(2)}°C",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
