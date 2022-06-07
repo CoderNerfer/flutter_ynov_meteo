@@ -42,24 +42,24 @@ class _ForewardWeather extends State<ForewardWeather> {
                           vertical: 15.0, horizontal: 10.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
+                          children: const [
+                            Text(
                               "Tuesday, 07 June 2022",
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
                               ),
                             ),
-                            Container(
-                              width: 40,
-                              height: 40,
-                              color: Colors.black,
+                            // Container(
+                            //   width: 40,
+                            //   height: 40,
+                            //   color: Colors.black,
+                            // ),
+                            Image(
+                              image: NetworkImage(
+                                  "http://openweathermap.org/img/wn/10d.png"),
                             ),
-                            // Image(
-                            //   image: NetworkImage(
-                            //       "http://openweathermap.org/img/wn/10d.png"),
-                            // )
-                            const Text(
+                            Text(
                               "12,03°",
                               style: TextStyle(
                                 color: Colors.white,
