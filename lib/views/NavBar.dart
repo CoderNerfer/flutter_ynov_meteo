@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ynov_meteo/views/HomePage.dart';
 import 'package:ynov_meteo/views/ForewardWeather.dart';
+import 'package:ynov_meteo/views/CitiesManagement.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({
@@ -52,14 +53,14 @@ class NavBar extends StatelessWidget {
               primary: Colors.white,
             ),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return const SecondPage(title: 'SecondPage');
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const CitiesManagement();
+                  },
+                ),
+              );
             },
             child: const Text('Gerer vos villes'),
           ),
