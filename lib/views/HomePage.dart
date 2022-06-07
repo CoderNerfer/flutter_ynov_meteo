@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ynov_meteo/views/NavBar.dart';
 import 'package:ynov_meteo/model/current.dart';
 import 'package:ynov_meteo/services/current_service.dart';
+import 'package:ynov_meteo/model/currenthour.dart';
+import 'package:ynov_meteo/services/currenthour_service.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,7 +56,7 @@ class _HomePage extends State<HomePage> {
 
                                     // "Monday\n02, 2022\n21:00",
                                     ,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                     ),
                                   ),
@@ -95,49 +97,60 @@ class _HomePage extends State<HomePage> {
               padding:
                   const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Container(
-                height: 400,
-                child: ListView.builder(
-                  itemCount: 24,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 5.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 144, 168, 253),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 10.0),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text(
-                                  "11:00",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
+                  height: 400,
+                  child: FutureBuilder<List<Currenthour>>(
+                    future: getCurrentHourData(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                            child: Text("Chargement en cours ..."));
+                      } else {
+                        return ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 5.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 144, 168, 253),
+                                  borderRadius: BorderRadius.circular(6),
                                 ),
-                                Image(
-                                  image: NetworkImage(
-                                      "http://openweathermap.org/img/wn/10d.png"),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 15.0, horizontal: 10.0),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Text(
+                                          "11:00",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Image(
+                                          image: NetworkImage(
+                                              "http://openweathermap.org/img/wn/10d.png"),
+                                        ),
+                                        Text(
+                                          "12,03°",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ]),
                                 ),
-                                Text(
-                                  "12,03°",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ]),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    },
+                  )),
             ),
           ]),
         ),
