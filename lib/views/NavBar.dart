@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ynov_meteo/views/HomePage.dart';
+import 'package:ynov_meteo/views/ForewardWeather.dart';
 
 class NavBar extends StatelessWidget {
+  const NavBar({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -13,14 +18,14 @@ class NavBar extends StatelessWidget {
               primary: Colors.white,
             ),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return const SecondPage(title: 'SecondPage');
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const HomePage();
+                  },
+                ),
+              );
             },
             child: const Text('Meteo Heure par Heure'),
           ),
@@ -30,14 +35,14 @@ class NavBar extends StatelessWidget {
               primary: Colors.white,
             ),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return const SecondPage(title: 'SecondPage');
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ForewardWeather();
+                  },
+                ),
+              );
             },
             child: const Text('Prevision Meteo'),
           ),
