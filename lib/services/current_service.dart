@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ynov_meteo/model/current.dart';
+import 'package:ynov_meteo/model/weather.dart';
 import 'package:http/http.dart' as http;
 
 Future<Current> getCurrentData() async {

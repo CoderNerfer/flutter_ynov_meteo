@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ynov_meteo/model/currenthour.dart';
+import 'package:ynov_meteo/model/weatherhour.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Currenthour>> getCurrentHourData() async {

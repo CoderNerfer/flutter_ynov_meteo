@@ -42,8 +42,6 @@ class Hourly {
     // this.pop,
     // this.rain);
   );
-
-  
 }
 
 class Weather {
@@ -53,9 +51,4 @@ class Weather {
   String icon;
 
   Weather(this.icon);
-
-  
 }
-
-
-

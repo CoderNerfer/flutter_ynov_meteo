@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ynov_meteo/views/NavBar.dart';
-import 'package:ynov_meteo/model/current.dart';
+import 'package:ynov_meteo/model/weather.dart';
 import 'package:ynov_meteo/services/current_service.dart';
-import 'package:ynov_meteo/model/currenthour.dart';
+import 'package:ynov_meteo/model/weatherhour.dart';
 import 'package:ynov_meteo/services/currenthour_service.dart';
 import 'package:intl/intl.dart';
 
@@ -97,8 +97,8 @@ class _HomePage extends State<HomePage> {
               padding:
                   const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Container(
-                  height: 400,
-                  child: FutureBuilder<List<Currenthour>>(
+                height: 400,
+                child: FutureBuilder<List<Currenthour>>(
                     future: getCurrentHourData(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
@@ -161,8 +161,8 @@ class _HomePage extends State<HomePage> {
                           },
                         );
                       }
-                    },
-                  )),
+                    }),
+              ),
             ),
           ]),
         ),
