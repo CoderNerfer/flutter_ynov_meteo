@@ -19,11 +19,13 @@ Future<List<Currenthour>> getCurrentHourData() async {
   if (responce.statusCode == 200) {
     var jsonResponse = jsonDecode(responce.body);
     for (var i = 0; i < jsonResponse["hourly"].length - 1; i++) {
-      Currenthour current = Currenthour(jsonResponse["lat"],
-          jsonResponse["lon"], jsonResponse["timezone_offset"], [
+      Currenthour current = Currenthour(
+          double.parse(jsonResponse["lat"].toString()),
+          double.parse(jsonResponse["lon"].toString()),
+          jsonResponse["timezone_offset"], [
         Hourly(
             jsonResponse["hourly"][i]["dt"],
-            jsonResponse["hourly"][i]["temp"],
+            double.parse(jsonResponse["hourly"][i]["temp"].toString()),
             [Weather(jsonResponse["hourly"][i]["weather"][0]["icon"])])
       ]);
 

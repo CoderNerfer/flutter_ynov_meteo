@@ -16,11 +16,14 @@ Future<List<Currentdaily>> getCurrentDailyData() async {
   if (responce.statusCode == 200) {
     var jsonResponse = jsonDecode(responce.body);
     for (var i = 0; i < jsonResponse["daily"].length - 1; i++) {
-      Currentdaily current = Currentdaily(jsonResponse["lat"],
-          jsonResponse["lon"], jsonResponse["timezone_offset"], [
+      Currentdaily current = Currentdaily(
+          double.parse(jsonResponse["lat"].toString()),
+          double.parse(jsonResponse["lon"].toString()),
+          jsonResponse["timezone_offset"], [
         Daily(
             jsonResponse['daily'][i]['dt'],
-            Temp(jsonResponse['daily'][i]['temp']['day']),
+            Temp(double.parse(
+                jsonResponse['daily'][i]['temp']['day'].toString())),
             [Weather(jsonResponse['daily'][i]['weather'][0]['icon'])])
       ]);
       currentd.add(current);

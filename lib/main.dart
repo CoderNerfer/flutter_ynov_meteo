@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ynov_meteo/views/HomePage.dart';
-import 'package:ynov_meteo/model/city.dart';
+import 'package:ynov_meteo/views/CitiesManagement.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const CitiesManagement(),
     );
   }
 }
