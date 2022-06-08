@@ -52,7 +52,7 @@ class _HomePage extends State<HomePage> {
                               children: [
                                 Column(children: [
                                   Text(
-                                    "${DateFormat('EEE dd,gi\nMMM yyyy\nhh:mm a').format(DateTime.fromMillisecondsSinceEpoch((snapshot.data!.dt + (snapshot.data!.timezone)) * 1000))}\n\n${snapshot.data!.weather[0].description}"
+                                    "${DateFormat('EEE dd\nMMM yyyy\nhh:mm a').format(DateTime.fromMillisecondsSinceEpoch((snapshot.data!.dt + (snapshot.data!.timezone)) * 1000))}\n\n${snapshot.data!.weather[0].description}"
 
                                     // "Monday\n02, 2022\n21:00",
                                     ,
@@ -123,21 +123,33 @@ class _HomePage extends State<HomePage> {
                                   child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text(
-                                          "11:00",
-                                          style: TextStyle(
+                                          DateFormat('hh:mm a').format(DateTime
+                                              .fromMillisecondsSinceEpoch(
+                                                  (snapshot.data![index]
+                                                              .hourly[0].dt +
+                                                          (snapshot.data![index]
+                                                              .timezoneOffset)) *
+                                                      1000)),
+                                          style: const TextStyle(
                                             fontSize: 18,
                                             color: Colors.white,
                                           ),
                                         ),
                                         Image(
                                           image: NetworkImage(
-                                              "http://openweathermap.org/img/wn/10d.png"),
+                                              "http://openweathermap.org/img/wn/" +
+                                                  snapshot
+                                                      .data![index]
+                                                      .hourly[0]
+                                                      .weather[0]
+                                                      .icon +
+                                                  ".png"),
                                         ),
                                         Text(
-                                          "12,03°",
-                                          style: TextStyle(
+                                          "${(snapshot.data![index].hourly[0].temp - 273.15).toStringAsFixed(2)}°C",
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 18,
                                           ),

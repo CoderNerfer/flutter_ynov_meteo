@@ -20,7 +20,7 @@ Future<List<Currenthour>> getCurrentHourData() async {
     var jsonResponse = jsonDecode(responce.body);
     for (var i = 0; i < jsonResponse["hourly"].length - 1; i++) {
       Currenthour current = Currenthour(jsonResponse["lat"],
-          jsonResponse["lon"], jsonResponse["timezoneOffset"], [
+          jsonResponse["lon"], jsonResponse["timezone_offset"], [
         Hourly(
             jsonResponse["hourly"][i]["dt"],
             jsonResponse["hourly"][i]["temp"],
