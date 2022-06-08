@@ -16,6 +16,7 @@ class _CitiesManagement extends State<CitiesManagement> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // deleteCity(14);
   }
 
   @override
@@ -92,13 +93,27 @@ class _CitiesManagement extends State<CitiesManagement> {
                                           ),
                                         ),
                                         Row(
-                                          children: const [
-                                            Icon(
-                                              Icons.restore_from_trash,
-                                              color: Color.fromARGB(
-                                                  255, 32, 32, 32),
-                                              size: 40.0,
-                                            ),
+                                          children: [
+                                            // Icon(
+                                            //   Icons.restore_from_trash,
+                                            //   color: Color.fromARGB(
+                                            //       255, 32, 32, 32),
+                                            //   size: 40.0,
+                                            // ),
+                                            TextButton(
+                                              style: ButtonStyle(
+                                                foregroundColor:
+                                                    MaterialStateProperty.all<
+                                                        Color>(Colors.white),
+                                              ),
+                                              onPressed: () {
+                                                deleteCity(
+                                                  snapshot.data![index]['id'],
+                                                );
+                                                setState(() {});
+                                              },
+                                              child: const Text('Supprimer'),
+                                            )
                                           ],
                                         ),
                                       ]),
