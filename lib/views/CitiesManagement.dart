@@ -4,8 +4,10 @@ import 'package:ynov_meteo/data/bdd.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CitiesManagement extends StatefulWidget {
+  final String title;
   const CitiesManagement({
     Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -14,10 +16,8 @@ class CitiesManagement extends StatefulWidget {
 
 class _CitiesManagement extends State<CitiesManagement> {
   @override
-  void initState()  {
-    // TODO: implement initState
+  void initState() {
     super.initState();
-    // deleteCity(14);
   }
 
   @override
@@ -26,7 +26,7 @@ class _CitiesManagement extends State<CitiesManagement> {
       drawer: const NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
-        title: const Text('Gerer vos villes'),
+        title: Text('Gerer vos villes | actuel ${widget.title}'),
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         toolbarHeight: 50,
       ),
@@ -112,6 +112,18 @@ class _CitiesManagement extends State<CitiesManagement> {
                                                     'city_name',
                                                     snapshot.data![index]
                                                         ['city']);
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) {
+                                                      return CitiesManagement(
+                                                          title: prefs
+                                                              .getString(
+                                                                  'city_name')
+                                                              .toString());
+                                                    },
+                                                  ),
+                                                );
                                               },
                                               icon: const Icon(
                                                 Icons.add_location_alt,

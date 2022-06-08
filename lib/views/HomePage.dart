@@ -54,10 +54,7 @@ class _HomePage extends State<HomePage> {
                               children: [
                                 Column(children: [
                                   Text(
-                                    "${DateFormat('EEE dd\nMMM yyyy\nhh:mm a').format(DateTime.fromMillisecondsSinceEpoch((snapshot.data!.dt + (snapshot.data!.timezone)) * 1000))}\n\n${snapshot.data!.weather[0].description}"
-
-                                    // "Monday\n02, 2022\n21:00",
-                                    ,
+                                    "${DateFormat('EEE dd\nMMM yyyy\nhh:mm a').format(DateTime.fromMillisecondsSinceEpoch((snapshot.data!.dt + (snapshot.data!.timezone)) * 1000))}\n\n${snapshot.data!.weather[0].description}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),
@@ -95,11 +92,10 @@ class _HomePage extends State<HomePage> {
                 )
                 //
                 ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: Container(
-                height: 400,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 20.0),
                 child: FutureBuilder<List<Currenthour>>(
                     future: getCurrentHourData(),
                     builder: (context, snapshot) {

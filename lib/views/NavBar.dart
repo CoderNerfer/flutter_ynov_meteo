@@ -59,15 +59,18 @@ class NavBar extends StatelessWidget {
               textStyle: const TextStyle(fontSize: 18),
               primary: Colors.white,
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const CitiesManagement();
-                  },
-                ),
-              );
+            onPressed: () async {
+              final prefs = await SharedPreferences.getInstance().then((value) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CitiesManagement(
+                          title: value.getString('city_name').toString());
+                    },
+                  ),
+                );
+              });
             },
             child: const Text('Gerer vos villes'),
           ),
