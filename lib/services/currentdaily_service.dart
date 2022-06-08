@@ -2,13 +2,15 @@ import 'dart:convert';
 
 import 'package:ynov_meteo/model/weatherdaily.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<List<Currentdaily>> getCurrentDailyData() async {
+  final prefs = await SharedPreferences.getInstance();
   List<Currentdaily> currentd = [];
 
   var url = Uri.https("api.openweathermap.org", '/data/2.5/onecall', {
-    'lat': '48.8534',
-    'lon': '2.3488',
+    'lat': prefs.getString('lat'),
+    'lon': prefs.getString('lon'),
     'exclude': 'current,minutely,hourly,alerts',
     'appid': '4364afa41febe0e86a2e4b3ae7860fed'
   });

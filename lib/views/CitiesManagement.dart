@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ynov_meteo/views/NavBar.dart';
 import 'package:ynov_meteo/data/bdd.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CitiesManagement extends StatefulWidget {
   const CitiesManagement({
@@ -13,7 +14,7 @@ class CitiesManagement extends StatefulWidget {
 
 class _CitiesManagement extends State<CitiesManagement> {
   @override
-  void initState() {
+  void initState()  {
     // TODO: implement initState
     super.initState();
     // deleteCity(14);
@@ -94,12 +95,31 @@ class _CitiesManagement extends State<CitiesManagement> {
                                         ),
                                         Row(
                                           children: [
-                                            // Icon(
-                                            //   Icons.restore_from_trash,
-                                            //   color: Color.fromARGB(
-                                            //       255, 32, 32, 32),
-                                            //   size: 40.0,
-                                            // ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                final prefs =
+                                                    await SharedPreferences
+                                                        .getInstance();
+                                                await prefs.setString(
+                                                    'lat',
+                                                    snapshot.data![index]
+                                                        ['latitude']);
+                                                await prefs.setString(
+                                                    'lon',
+                                                    snapshot.data![index]
+                                                        ['longitude']);
+                                                await prefs.setString(
+                                                    'city_name',
+                                                    snapshot.data![index]
+                                                        ['city']);
+                                              },
+                                              icon: const Icon(
+                                                Icons.add_location_alt,
+                                                color: Color.fromARGB(
+                                                    255, 32, 32, 32),
+                                                size: 40.0,
+                                              ),
+                                            ),
                                             TextButton(
                                               style: ButtonStyle(
                                                 foregroundColor:

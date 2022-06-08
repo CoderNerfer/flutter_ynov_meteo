@@ -2,8 +2,14 @@ import 'dart:convert';
 
 import 'package:ynov_meteo/model/weather.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-Future<Current> getCurrentData({String city = 'Paris'}) async {
+Future<Current> getCurrentData({String? city = 'Paris'}) async {
+  final prefs = await SharedPreferences.getInstance();
+  String? localcity = prefs.getString('action');
+  if (localcity != null) {
+    city = localcity;
+  }
   Current current = Current(
     Coord(0.00, 0.00),
     [Weather("", "", "")],

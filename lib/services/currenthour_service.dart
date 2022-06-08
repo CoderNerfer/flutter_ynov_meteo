@@ -2,16 +2,18 @@ import 'dart:convert';
 
 import 'package:ynov_meteo/model/weatherhour.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<List<Currenthour>> getCurrentHourData() async {
+  final prefs = await SharedPreferences.getInstance();
   List<Currenthour> currenth = [];
   // Currenthour currenth = Currenthour(0.00, 0.00, 0, [
   //   Hourly(0, 0.00, [Weather("")])
   // ]);
 
   var url = Uri.https("api.openweathermap.org", '/data/2.5/onecall', {
-    'lat': '48.8534',
-    'lon': '2.3488',
+    'lat': prefs.getString('lat'),
+    'lon': prefs.getString('lon'),
     'exclude': 'current,minutely,daily,alerts',
     'appid': '4364afa41febe0e86a2e4b3ae7860fed'
   });

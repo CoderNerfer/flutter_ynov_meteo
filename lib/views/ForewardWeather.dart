@@ -5,8 +5,10 @@ import 'package:ynov_meteo/services/currentdaily_service.dart';
 import 'package:intl/intl.dart';
 
 class ForewardWeather extends StatefulWidget {
+  final String title;
   const ForewardWeather({
     Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,7 @@ class _ForewardWeather extends State<ForewardWeather> {
       drawer: const NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
-        title: const Text('Paris'),
+        title: Text(widget.title),
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         toolbarHeight: 50,
       ),

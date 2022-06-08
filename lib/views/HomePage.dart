@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ynov_meteo/data/bdd.dart';
 import 'package:ynov_meteo/views/NavBar.dart';
 import 'package:ynov_meteo/model/weather.dart';
 import 'package:ynov_meteo/services/current_service.dart';
@@ -8,8 +7,10 @@ import 'package:ynov_meteo/services/currenthour_service.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
+  final String title;
   const HomePage({
     Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -17,14 +18,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const NavBar(),
       backgroundColor: const Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
-        title: const Text('Paris'),
+        title: Text(widget.title),
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         toolbarHeight: 50,
       ),
