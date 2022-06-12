@@ -38,7 +38,11 @@ class _HomePage extends State<HomePage> {
                 child: FutureBuilder<Current>(
                   future: getCurrentData(),
                   builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
+                    if (snapshot.data!.timezone == -1) {
+                      return const Center(
+                          child: Text("Chargement impossible ..."));
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.waiting) {
                       return const Center(
                           child: Text("Chargement en cours ..."));
                     } else {
@@ -99,7 +103,11 @@ class _HomePage extends State<HomePage> {
                 child: FutureBuilder<List<Currenthour>>(
                     future: getCurrentHourData(),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
+                      if (snapshot.data!.length == 0) {
+                        return const Center(
+                            child: Text("Chargement impossible ..."));
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.waiting) {
                         return const Center(
                             child: Text("Chargement en cours ..."));
                       } else {

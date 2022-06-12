@@ -16,7 +16,7 @@ Future<Current> getCurrentData({String? city = 'Paris'}) async {
     Main(0.00, 0),
     Wind(0.00),
     0,
-    0,
+    -1,
   );
 
   var url = Uri.https("api.openweathermap.org", '/data/2.5/weather',

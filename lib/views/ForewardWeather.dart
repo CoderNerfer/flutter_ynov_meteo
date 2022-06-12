@@ -32,7 +32,10 @@ class _ForewardWeather extends State<ForewardWeather> {
           child: FutureBuilder<List<Currentdaily>>(
               future: getCurrentDailyData(),
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
+                if (snapshot.data!.length == 0) {
+                  return const Center(child: Text("Chargement impossible ..."));
+                } else if (snapshot.connectionState ==
+                    ConnectionState.waiting) {
                   return const Center(child: Text("Chargement en cours ..."));
                 } else {
                   return ListView.builder(
