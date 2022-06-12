@@ -35,6 +35,7 @@ Future<List<Currenthour>> getCurrentHourData() async {
     }
   } else {
     print('Request failed : ${responce.statusCode}');
+    return currenth;
   }
   return currenth;
 }

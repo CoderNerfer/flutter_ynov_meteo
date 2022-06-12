@@ -32,6 +32,7 @@ Future<List<Currentdaily>> getCurrentDailyData() async {
     }
   } else {
     print('Request failed : ${responce.statusCode}');
+    return currentd;
   }
   return currentd;
 }

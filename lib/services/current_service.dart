@@ -41,6 +41,7 @@ Future<Current> getCurrentData({String? city = 'Paris'}) async {
     );
   } else {
     print('Request failed : ${responce.statusCode}');
+    return current;
   }
   return current;
 }

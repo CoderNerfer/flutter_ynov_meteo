@@ -15,7 +15,7 @@ class Splashscreen extends StatelessWidget {
       nextScreen: CitiesManagement(title: ' '),
       splashTransition: SplashTransition.slideTransition,
       pageTransitionType: PageTransitionType.bottomToTop,
-      backgroundColor: Colors.blue,
+      backgroundColor: Color.fromARGB(255, 144, 168, 253),
     );
   }
 }

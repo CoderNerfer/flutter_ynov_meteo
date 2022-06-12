@@ -66,7 +66,21 @@ class _CitiesManagement extends State<CitiesManagement> {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                          child: Text("Chargement en cours ..."));
+                          child: Text(
+                        "Chargement en cours ...",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ));
+                    }
+                    if (snapshot.data!.length == 0) {
+                      return const Center(
+                          child: Text(
+                        "Aucune ville renseigner ...",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ));
                     } else {
                       return ListView.builder(
                           itemCount: snapshot.data!.length,

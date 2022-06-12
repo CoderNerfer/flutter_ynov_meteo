@@ -38,13 +38,23 @@ class _HomePage extends State<HomePage> {
                 child: FutureBuilder<Current>(
                   future: getCurrentData(),
                   builder: (context, snapshot) {
-                    if (snapshot.data!.timezone == -1) {
+                    if (snapshot.data?.timezone == -1) {
                       return const Center(
-                          child: Text("Chargement impossible ..."));
+                          child: Text(
+                        "Chargement impossible ...",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ));
                     } else if (snapshot.connectionState ==
                         ConnectionState.waiting) {
                       return const Center(
-                          child: Text("Chargement en cours ..."));
+                          child: Text(
+                        "Chargement en cours ...",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ));
                     } else {
                       return Container(
                         decoration: BoxDecoration(
@@ -103,13 +113,23 @@ class _HomePage extends State<HomePage> {
                 child: FutureBuilder<List<Currenthour>>(
                     future: getCurrentHourData(),
                     builder: (context, snapshot) {
-                      if (snapshot.data!.length == 0) {
+                      if (snapshot.data?.length == 0) {
                         return const Center(
-                            child: Text("Chargement impossible ..."));
+                            child: Text(
+                          "Chargement impossible ...",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ));
                       } else if (snapshot.connectionState ==
                           ConnectionState.waiting) {
                         return const Center(
-                            child: Text("Chargement en cours ..."));
+                            child: Text(
+                          "Chargement en cours ...",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ));
                       } else {
                         return ListView.builder(
                           itemCount: snapshot.data!.length,
