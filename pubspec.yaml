@@ -44,16 +44,16 @@ dependencies:
   shared_preferences: ^2.0.13
   flutter_native_splash: ^2.1.1
   page_transition: ^2.0.5
+  flutter_launcher_icons: ^0.9.3
  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.9.2"
 
 flutter_icons:
   android: true
-  image_path: assets/icons/splash.png
+  image_path: assets\logo_icon.png
   ios: true
   remove_alpha_ios: true
 
