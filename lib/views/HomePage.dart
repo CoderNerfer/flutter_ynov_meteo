@@ -35,6 +35,10 @@ class _HomePage extends State<HomePage> {
             Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 30.0, horizontal: 20.0),
+                /**
+                 * Création d'un widget permetant l'affichage des données météorilogique actuelle
+                 * la fonction étant async nous avons un message de chargement ainsi que d'erreur de chargement
+                 */
                 child: FutureBuilder<Current>(
                   future: getCurrentData(),
                   builder: (context, snapshot) {
@@ -110,6 +114,10 @@ class _HomePage extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 20.0),
+                /**
+                 * Création de widgets permetant l'affichage des données météorilogique heure par heure
+                 * la fonction étant async nous avons un message de chargement ainsi que d'erreur de chargement
+                 */
                 child: FutureBuilder<List<Currenthour>>(
                     future: getCurrentHourData(),
                     builder: (context, snapshot) {
@@ -124,12 +132,13 @@ class _HomePage extends State<HomePage> {
                       } else if (snapshot.connectionState ==
                           ConnectionState.waiting) {
                         return const Center(
-                            child: Text(
-                          "Chargement en cours ...",
-                          style: const TextStyle(
-                            color: Colors.white,
+                          child: Text(
+                            "Chargement en cours ...",
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
-                        ));
+                        );
                       } else {
                         return ListView.builder(
                           itemCount: snapshot.data!.length,

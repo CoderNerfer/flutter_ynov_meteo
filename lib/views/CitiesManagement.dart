@@ -61,26 +61,33 @@ class _CitiesManagement extends State<CitiesManagement> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0),
+                /**
+                 * Widget permetant la creation de Widget (ListView servant à afficher l'ensemble des villes stocke dans la BDD)
+                 * Ces villes contiennent des boutons icons un servant à changer la villes du choix et l'autre servant a suprimer la ville de la BDD
+                 * La fonction est async, nous allons donc avoir différent message un de chargement un second signalant qu'aucune ville n'est présente dans la BDD 
+                 */
                 child: FutureBuilder<List<Map>>(
                   future: getCities(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                          child: Text(
-                        "Chargement en cours ...",
-                        style: const TextStyle(
-                          color: Colors.white,
+                        child: Text(
+                          "Chargement en cours ...",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
-                      ));
+                      );
                     }
                     if (snapshot.data!.length == 0) {
                       return const Center(
-                          child: Text(
-                        "Aucune ville renseigner ...",
-                        style: const TextStyle(
-                          color: Colors.white,
+                        child: Text(
+                          "Aucune ville renseigner ...",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
-                      ));
+                      );
                     } else {
                       return ListView.builder(
                           itemCount: snapshot.data!.length,

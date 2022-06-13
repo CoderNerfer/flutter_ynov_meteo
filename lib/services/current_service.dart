@@ -4,9 +4,15 @@ import 'package:ynov_meteo/model/weather.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+/**
+ * fonction asynchrone permetant de récuperer les données météorologique d'une ville précise
+ * @params city avec une valeurs par défaut = PARIS
+ * @fichier_locaux city_name (ville actuellement utilisée) 
+ * @return un objet Current (initalisé a vide) ou un object Current remplie grace aux données de la BDD
+ */
 Future<Current> getCurrentData({String? city = 'Paris'}) async {
   final prefs = await SharedPreferences.getInstance();
-  String? localcity = prefs.getString('action');
+  String? localcity = prefs.getString('city_name');
   if (localcity != null) {
     city = localcity;
   }

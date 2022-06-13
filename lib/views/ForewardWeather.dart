@@ -29,6 +29,10 @@ class _ForewardWeather extends State<ForewardWeather> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),
+          /**
+           * Creation de Widgets listview affichant les données météorologique jour à jour 
+           * la fonction async nous avons des messages de chargement ou erreur de chargement
+           */
           child: FutureBuilder<List<Currentdaily>>(
               future: getCurrentDailyData(),
               builder: (context, snapshot) {

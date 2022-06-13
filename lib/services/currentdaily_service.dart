@@ -4,6 +4,12 @@ import 'package:ynov_meteo/model/weatherdaily.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+/**
+ * fonction asynchrone permetant de récuperer les données météorologique jour par jour d'une ville précise 
+ * @params aucun
+ * @fichier_locaux lat et lon (stock respectivement la latitude et longitude de la ville utilisée)
+ * @return une liste de l'objet Currentdaily (initalisé a vide) ou une liste de l'objet Currentdaily remplie grace aux données de la BDD
+ */
 Future<List<Currentdaily>> getCurrentDailyData() async {
   final prefs = await SharedPreferences.getInstance();
   List<Currentdaily> currentd = [];

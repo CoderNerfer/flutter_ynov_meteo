@@ -4,12 +4,15 @@ import 'package:ynov_meteo/model/weatherhour.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+/**
+ * fonction asynchrone permetant de récuperer les données météorologique jour par jour d'une ville précise 
+ * @params aucun
+ * @fichier_locaux lat et lon (stock respectivement la latitude et longitude de la ville utilisée)
+ * @return une liste de l'objet Currenthour (initalisé a vide) ou une liste de l'objet Currenthour remplie grace aux données de la BDD
+ */
 Future<List<Currenthour>> getCurrentHourData() async {
   final prefs = await SharedPreferences.getInstance();
   List<Currenthour> currenth = [];
-  // Currenthour currenth = Currenthour(0.00, 0.00, 0, [
-  //   Hourly(0, 0.00, [Weather("")])
-  // ]);
 
   var url = Uri.https("api.openweathermap.org", '/data/2.5/onecall', {
     'lat': prefs.getString('lat'),
